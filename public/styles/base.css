@@ -1,0 +1,147 @@
+/* GLOBAL */
+body {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 0;
+    background-color: #f1f8fc;
+    color: #384050;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #00497c;
+    padding: 15px 30px;
+}
+
+/* MENU */
+.nav .menu {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    position: relative;
+}
+
+
+/* même style pour button ET a */
+.menu-btn {
+    all: unset;
+    background: none;
+    border: none;
+    color: #f1f8fc;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* hover identique */
+.menu-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* SUBMENU */
+.submenu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #f1f8fc;
+    border-radius: 10px;
+    padding: 10px 0;
+    min-width: 260px;
+    list-style: none;
+    margin: 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* visible */
+.menu-item.active .submenu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* items */
+.submenu li {
+    padding: 10px 20px;
+}
+
+.submenu li:hover {
+    background: #f1f8fc;
+}
+
+/* liens */
+.submenu a {
+    text-decoration: none;
+    color: #384050;
+}
+
+/* MAIN */
+.main {
+    padding: 40px;
+    min-height: 70vh;
+}
+
+/* FOOTER */
+.footer {
+    background: #00497c;
+    text-align: center;
+    padding: 15px;
+    color: #f1f8fc;
+}
+
+/* RESPONSIVE SIMPLE */
+@media (max-width: 768px) {
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        width: 100%;
+    }
+
+    .nav .menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+
+    .menu-btn {
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+    }
+
+    /* sous-menu devient inline */
+    .submenu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        box-shadow: none;
+        background: #f5f5f5;
+        margin-left: 10px;
+        border-radius: 6px;
+        display: none;
+    }
+
+    /* affichage via JS */
+    .menu-item.active .submenu {
+        display: block;
+    }
+}
