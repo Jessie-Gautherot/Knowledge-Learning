@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
  * - Prevent duplicate purchases
  * - Create a purchase for a cursus or a lesson
  * - Check if a user has access to content
- * - Centralize business rules related to purchases
+ * - Handle purchase business rules
  */
 class PurchaseService
 {
@@ -94,6 +94,30 @@ class PurchaseService
     }
 
     /**
+    * Check if a user bought a cursus.
+    *
+    * @param User $user
+    * @param Cursus $cursus
+    * @return bool
+    */
+    public function hasBoughtCursus(User $user, Cursus $cursus): bool
+    {
+        return $this->purchaseRepository->hasBoughtCursus($user, $cursus);
+    }
+
+    /**
+    * Check if a user bought a lesson.
+    *
+    * @param User $user
+    * @param Lesson $lesson
+    * @return bool
+    */
+    public function hasBoughtLesson(User $user, Lesson $lesson): bool
+    {
+        return $this->purchaseRepository->hasBoughtLesson($user, $lesson);
+    }
+
+    /**
     * Check if a user can access a lesson.
     *
     * Access is allowed if:
@@ -109,14 +133,12 @@ class PurchaseService
     {
         
         // Direct purchase a lesson
-        if ($this->purchaseRepository->hasBoughtLesson($user, $lesson)) {
+        if ($this->hasBoughtLesson($user, $lesson)) {
             return true;
         }
 
         // Access via cursus
-        return $this->purchaseRepository->hasBoughtCursus(
-            $user,
-            $lesson->getCursus()
-        );
+        return $this->hasBoughtCursus($user, $lesson->getCursus());
+        
     }
 }
