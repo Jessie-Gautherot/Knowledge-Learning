@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Mes certifications
+{% endblock %}
+
+{% block body %}
+
+<h1>Mes certifications</h1>
+
+{% if certifications %}
+
+    <ul>
+
+        {% for certification in certifications %}
+
+            <li class="flash-success">
+                Certification Knowledge Learning :
+                {{ certification.theme.name }}
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+{% else %}
+
+    <p class="warning-message">
+        Vous n'avez encore obtenu aucune certification.
+    </p>
+
+{% endif %}
+
+{% endblock %}

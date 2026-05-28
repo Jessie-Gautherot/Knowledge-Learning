@@ -14,63 +14,76 @@
     </div>
 
     <nav class="nav">
+
         <ul class="menu">
 
             <li class="menu-item">
-                <a class="menu-btn" href="{{ path('app_home') }}">Accueil</a>
+                <a class="menu-btn" href="{{ path('app_home') }}">
+                    Accueil
+                </a>
             </li>
 
             <li class="menu-item">
-                <button class="menu-btn">Musique</button>
-                <ul class="submenu">
-                    <li>Cursus guitare</li>
-                    <li>Cursus piano</li>
-                </ul>
+                <a class="menu-btn" href="{{ path('app_formations') }}">
+                    Nos formations
+                </a>
             </li>
 
-            <li class="menu-item">
-                <button class="menu-btn">Informatique</button>
-                <ul class="submenu">
-                    <li>Cursus d’initiation au développement web</li>
-                </ul>
+            {% if app.user %}
+
+                <li class="menu-item">
+                <a class="menu-btn" href="{{ path('certification_index') }}">
+                    Mes certifications
+                </a>
             </li>
 
-            <li class="menu-item">
-                <button class="menu-btn">Jardinage</button>
-                <ul class="submenu">
-                    <li>Cursus d’initiation au jardinage</li>
-                </ul>
-            </li>
+            {% endif %}
 
             <li class="menu-item">
-                <button class="menu-btn">Cuisine</button>
-                <ul class="submenu">
-                    <li>Cursus d’initiation à la cuisine</li>
-                    <li>Cursus d’initiation à l’art du dressage culinaire</li>
-                </ul>
-            </li>
 
-            <li class="menu-item">
                 <button class="menu-btn">
+
                     {% if app.user %}
                         Bonjour {{ app.user.name }}
                     {% else %}
                         Compte
                     {% endif %}
+
                 </button>
 
-                <ul class="submenu">
-                    {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
-                    {% else %}
-                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-                        <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
-                    {% endif %}
-                </ul>
-            </li>
+            <ul class="submenu">
 
-        </ul>
-    </nav>
+                {% if app.user %}
+
+                    <li>
+                        <a href="{{ path('app_logout') }}">
+                            Se déconnecter
+                        </a>
+                    </li>
+
+                {% else %}
+
+                    <li>
+                        <a href="{{ path('app_login') }}">
+                            Se connecter
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_register') }}">
+                            S'inscrire
+                        </a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </li>
+
+    </ul>
+
+</nav>
 </header>
 
 <main class="main">
