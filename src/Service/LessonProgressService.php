@@ -65,6 +65,19 @@ class LessonProgressService
     }
 
     /**
+    * Check if a lesson is validated for a user.
+    *
+    * @param User $user The user
+    * @param Lesson $lesson The lesson
+    *
+    * @return bool True if the lesson is validated
+    */
+    public function isLessonValidated(User $user, Lesson $lesson): bool
+    {
+        return $this->repo->isLessonValidated($user, $lesson);
+    }
+
+    /**
      * Check if a cursus is fully validated for a user
      */
     public function isCursusValidated(User $user, Cursus $cursus): bool

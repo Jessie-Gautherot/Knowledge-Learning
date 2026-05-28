@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ cursus.title }}
+{% endblock %}
+
+{% block body %}
+
+<h1>{{ cursus.title }}</h1>
+
+<p>
+    Prix : {{ cursus.price / 100 }} €
+</p>
+
+{% if isValidated %}
+
+    <p class="flash-success">
+        Vous avez validé ce cursus, bravo !
+    </p>
+
+{% endif %}
+
+{% if hasAccess or isValidated %}
+
+    <p class="flash-success">
+        Cursus acheté.
+    </p>
+
+{% else %}
+
+    {% if app.user %}
+
+        {% if not app.user.isActive %}
+
+            <div class="warning-message">
+                Votre compte n'est pas encore activé.
+                Veuillez vérifier vos emails et activer votre compte pour acheter un cursus ou une leçon.
+            </div>
+
+        {% else %}
+
+            <a href="{{ path('purchase_cursus', { id: cursus.id }) }}">
+                Acheter ce cursus
+            </a>
+
+        {% endif %}
+
+    {% else %}
+
+        <p>
+            <a href="{{ path('app_login') }}">Connectez-vous</a>
+            pour acheter ce cursus.
+        </p>
+
+    {% endif %}
+
+{% endif %}
+
+<h2>Leçons du cursus</h2>
+
+<ul>
+
+    {% for lesson in cursus.lessons %}
+
+        <li>
+
+            <h3>{{ lesson.title }}</h3>
+
+            <p>
+                Prix : {{ lesson.price / 100 }} €
+            </p>
+
+            {% if lessonAccess[lesson.id] ?? false %}
+
+                <a href="{{ path('lesson_show', { id: lesson.id }) }}">
+                    Voir la leçon
+                </a>
+
+            {% else %}
+
+                {% if app.user %}
+
+                    {% if app.user.isActive %}
+
+                        <a href="{{ path('purchase_lesson', { id: lesson.id }) }}">
+                            Acheter cette leçon
+                        </a>
+
+                    {% else %}
+
+                        <p>
+                            Votre compte doit être activé pour acheter une leçon.
+                        </p>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <p>
+                        <a href="{{ path('app_login') }}">Connectez-vous</a>
+                        pour acheter cette leçon.
+                    </p>
+
+                {% endif %}
+
+            {% endif %}
+
+        </li>
+
+    {% else %}
+
+        <li>
+            Aucune leçon disponible.
+        </li>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

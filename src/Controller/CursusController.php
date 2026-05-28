@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Controller\Front;
+namespace App\Controller;
 
 use App\Repository\CursusRepository;
 use App\Service\PurchaseService;
+use App\Service\LessonProgressService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 /**
  * Class CursusController
@@ -22,19 +24,23 @@ class CursusController extends AbstractController
      * - Fetches cursus by ID
      * - Checks if the cursus exists
      * - Checks if the connected user has purchased the cursus
+     * - Checks if the cursus is validated
+     * - Checks access for each lesson
      * - Sends data to the Twig view
      *
      * @param int $id ID of the cursus to display
      * @param CursusRepository $cursusRepository Repository used to fetch cursus data
      * @param PurchaseService $purchaseService Service handling purchase logic
-     *
+     * @param LessonProgressService $lessonProgressService Service handling lesson progress
+     * 
      * @return Response The HTTP response rendering the cursus page
      */
     #[Route('/cursus/{id}', name: 'cursus_show')]
     public function show(
         int $id,
         CursusRepository $cursusRepository,
-        PurchaseService $purchaseService
+        PurchaseService $purchaseService,
+        LessonProgressService $lessonProgressService 
     ): Response {
         $cursus = $cursusRepository->find($id);
 
@@ -45,14 +51,26 @@ class CursusController extends AbstractController
         $user = $this->getUser();
 
         $hasAccess = false;
+        $isValidated = false;
+        $lessonAccess = [];
 
         if ($user) {
             $hasAccess = $purchaseService->hasBoughtCursus($user, $cursus);
+            $isValidated = $lessonProgressService->isCursusValidated($user, $cursus);
+
+            foreach ($cursus->getLessons() as $lesson) {
+                $lessonAccess[$lesson->getId()] = $purchaseService->canAccessLesson(
+                    $user,
+                    $lesson
+                );
+            }
         }
 
-        return $this->render('cursus/show.html.twig', [
+        return $this->render('Cursus/show.html.twig', [
             'cursus' => $cursus,
             'hasAccess' => $hasAccess,
+            'isValidated' => $isValidated,
+            'lessonAccess' => $lessonAccess,
         ]);
     }
 }

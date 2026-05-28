@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ lesson.title }}
+{% endblock %}
+
+{% block body %}
+
+<section class="lesson">
+
+    <h1>{{ lesson.title }}</h1>
+
+    <p>
+        Cursus :
+        <a href="{{ path('cursus_show', {id: lesson.cursus.id}) }}">
+            {{ lesson.cursus.title }}
+        </a>
+    </p>
+
+    <hr>
+
+    {% if lesson.videoUrl %}
+
+        <iframe
+            width="800"
+            height="450"
+            src="{{ lesson.videoUrl }}"
+            allowfullscreen>
+        </iframe>
+
+        <hr>
+
+    {% endif %}
+
+    <div class="lesson-content">
+        {{ lesson.content }}
+    </div>
+
+    <hr>
+
+
+    {% if isValidated %}
+
+        <span class="lesson-valid">
+            ✓ Leçon validée
+        </span>
+
+    {% else %}
+
+        <form
+            method="post"
+            action="{{ path('lesson_validate',{ id: lesson.id }) }}">
+
+            <button type="submit">
+                Valider la leçon
+            </button>
+
+        </form>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

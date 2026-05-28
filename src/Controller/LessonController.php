@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Front;
+namespace App\Controller;
 
 use App\Repository\LessonRepository;
 use App\Service\PurchaseService;
@@ -20,7 +20,7 @@ class LessonController extends AbstractController
      * Display a lesson.
      *
      * This method:
-     * - fetch a lesson by ID
+     * - Get a lesson by ID
      * - Checks if the lesson exists
      * - check if the user is authenticated
      * - Verifies if the user has access (purchase required)
@@ -34,27 +34,34 @@ class LessonController extends AbstractController
     public function show(
         int $id,
         LessonRepository $lessonRepository,
-        PurchaseService $purchaseService
+        PurchaseService $purchaseService,
+        LessonProgressService $lessonProgressService
     ): Response {
         $lesson = $lessonRepository->find($id);
 
         if (!$lesson) {
-            throw $this->createNotFoundException('Lesson not found');
+            throw $this->createNotFoundException('Leçon introuvable');
         }
 
         $user = $this->getUser();
 
         if (!$user) {
-            $this->addFlash('error', 'You must be logged in.');
+            $this->addFlash('erreur', 'Vous n\'êtes pas connecté.');
             return $this->redirectToRoute('app_login');
         }
 
         if (!$purchaseService->canAccessLesson($user, $lesson)) {
-            throw $this->createAccessDeniedException('Access denied to this lesson.');
+            throw $this->createAccessDeniedException('Accès refusé à cette leçon.');
         }
+
+        $isValidated = $lessonProgressService->isLessonValidated(
+            $user,
+            $lesson
+        );
 
         return $this->render('lesson/show.html.twig', [
             'lesson' => $lesson,
+            'isValidated' => $isValidated,
         ]);
     }
 
@@ -64,7 +71,7 @@ class LessonController extends AbstractController
      * This method:
      * - Gets the lesson by ID
      * - Checks if the lesson exists
-     * - Cheks if the user is authenticated
+     * - Checks if the user is authenticated
      * - Checks access rights (purchase required)
      * - Delegates validation logic to the LessonProgressService
      * - Redirects to the lesson page with a success message
@@ -83,7 +90,7 @@ class LessonController extends AbstractController
         $lesson = $lessonRepository->find($id);
 
         if (!$lesson) {
-            throw $this->createNotFoundException('Lesson not found');
+            throw $this->createNotFoundException('Leçon non trouvée');
         }
 
         $user = $this->getUser();
@@ -93,12 +100,12 @@ class LessonController extends AbstractController
         }
 
         if (!$purchaseService->canAccessLesson($user, $lesson)) {
-        throw $this->createAccessDeniedException();
+        throw $this->createAccessDeniedException('Accès refusé à cette leçon.');
         }
  
         $lessonProgressService->validateLesson($user, $lesson);
 
-        $this->addFlash('success', 'Lesson validated successfully.');
+        $this->addFlash('success', 'Leçon validée avec succès.');
 
         return $this->redirectToRoute('lesson_show', ['id' => $id]);
     }
