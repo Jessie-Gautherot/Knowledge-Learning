@@ -20,15 +20,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 /**
  * Class UserAuthenticator
  *
- * Handles user authentication (login process).
+ * Handles user authentication.
  *
  * Responsibilities:
- * - Retrieve login credentials
- * - Load user from database
- * - Validate password
- * - Check account verification
+ * - Get login data
+ * - Find user by email
+ * - Check password
  * - Handle login success and failure
- * - Protect against CSRF attacks
+ * - Protect the form with CSRF
  */
 class UserAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -43,7 +42,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
      * Constructor
      *
      * @param RouterInterface $router Symfony router service
-     * @param UserRepository $userRepository Repository used to fetch users
+     * @param UserRepository $userRepository User repository
      */
     public function __construct(
         RouterInterface $router,
@@ -54,19 +53,19 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     }
 
     /**
-     * Handles authentication request (login form submission)
+     * Handles login form submission
      *
      * @param Request $request
      * @return Passport
      */
     public function authenticate(Request $request): Passport
     {
-        // Retrieve credentials from request
+        // Get login data from the form
         $email = $request->request->get('email', '');
         $password = $request->request->get('password', '');
         $csrfToken = $request->request->get('_csrf_token');
 
-        // Store last username for better UX
+        // Save the last entered email
         $request->getSession()->set(
             SecurityRequestAttributes::LAST_USERNAME,
             $email
@@ -81,32 +80,25 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
                 // User not found
                 if (!$user) {
                     throw new CustomUserMessageAuthenticationException(
-                        'Email non trouvé.'
-                    );
-                }
-
-                // Check if account is actived
-                if (!$user->isActive()) {
-                    throw new CustomUserMessageAuthenticationException(
-                        'Veuillez vérifier votre email avant de vous connecter.'
+                        'Email invalide.'
                     );
                 }
 
                 return $user;
             }),
 
-            // Password verification handled automatically
+            // Symfony checks the password automatically
             new PasswordCredentials($password),
 
             [
-                // CSRF protection
+                // Protect the form against CSRF attacks
                 new CsrfTokenBadge('authenticate', $csrfToken),
             ]
         );
     }
 
     /**
-     * Called when authentication succeeds
+     * Called after a successful login.
      *
      * @param Request $request
      * @param mixed $token
@@ -119,14 +111,12 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         string $firewallName
     ): ?Response {
 
-        // Redirect to previously requested page if exists
+        // Redirect to the requested page if available
         if ($targetPath = $this->getTargetPath(
             $request->getSession(),
             $firewallName
         )) {
-            return new Response('', Response::HTTP_FOUND, [
-                'Location' => $targetPath
-            ]);
+            return new RedirectResponse($targetPath);
         }
 
         // Default redirection (home page)
@@ -136,7 +126,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     }
 
     /**
-     * Called when authentication fails
+     * Called after a failed login.
      *
      * @param Request $request
      * @param AuthenticationException $exception
@@ -147,7 +137,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
         AuthenticationException $exception
     ): Response {
 
-        // Store error in session
+        // Save error message in session
         $request->getSession()->set(
             SecurityRequestAttributes::AUTHENTICATION_ERROR,
             $exception
@@ -159,7 +149,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     }
 
     /**
-     * Returns login URL
+     * Returns the login page URL.
      *
      * @param Request $request
      * @return string

@@ -106,7 +106,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
 
         // Définit le rôle par défaut demandé dans le TP
-        $this->roles = [];
+        $this->roles = ['ROLE_CLIENT'];
     }
 
     /**
