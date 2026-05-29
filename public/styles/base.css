@@ -91,6 +91,37 @@ body {
     min-height: 70vh;
 }
 
+/* MESSAGES */
+.flash-success,
+.lesson-valid {
+    color: #82b864;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.warning-message,
+.flash-error {
+    color: #cd2c2e;
+    border-left: 4px solid #cd2c2e;
+    padding-left: 10px;
+    margin: 15px 0;
+}
+
+
+/* BUTTONS */
+button {
+    background-color: #82b864;
+    color: #f1f8fc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
 /* FOOTER */
 .footer {
     background: #00497c;

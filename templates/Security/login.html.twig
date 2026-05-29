@@ -8,14 +8,16 @@
 
 {# Affichage des messages flash #}
 {% for message in app.flashes('success') %}
-    <div>
+    <div class="flash-success">
     {{ message }} 
     </div>
 {% endfor %}
 
 {# Affichage des erreurs de connexion #}
-{% if error %} <div style="color: red;">
-{{ error.messageKey|trans(error.messageData, 'security') }} </div>
+{% if error %} 
+<div class="flash-error">
+{{ error.messageKey|trans(error.messageData, 'security') }} 
+</div>
 {% endif %}
 
 <form method="post">
