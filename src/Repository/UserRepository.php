@@ -28,39 +28,6 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    /**
-     * Save a user (insert or update)
-     *
-     * @param User $user
-     * @param bool $flush Immediately flush changes to database
-     *
-     * @return void
-     */
-    public function save(User $user, bool $flush = true): void
-    {
-        $this->getEntityManager()->persist($user);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
-
-    /**
-     * Remove a user from database
-     *
-     * @param User $user
-     * @param bool $flush Immediately flush changes
-     *
-     * @return void
-     */
-    public function remove(User $user, bool $flush = true): void
-    {
-        $this->getEntityManager()->remove($user);
-
-        if ($flush) {
-            $this->getEntityManager()->flush();
-        }
-    }
 
     /**
      * Find a user by email 
