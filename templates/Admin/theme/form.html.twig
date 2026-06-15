@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+<h1>{{ title }}</h1>
+
+<a href="{{ path('admin_theme_index') }}">Retour à la liste</a>
+
+{{ form_start(form) }}
+
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <button type="submit">Enregistrer</button>
+
+{{ form_end(form) }}
+
+{% endblock %}

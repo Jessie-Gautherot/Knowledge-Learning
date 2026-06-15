@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+<h1>{{ title }}</h1>
+
+<a href="{{ path('admin_cursus_index') }}">Retour à la liste</a>
+
+{{ form_start(form) }}
+
+    <div>
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+        {{ form_errors(form.title) }}
+    </div>
+
+    <div>
+        {{ form_label(form.price) }}
+        {{ form_widget(form.price) }}
+        {{ form_errors(form.price) }}
+    </div>
+
+    <div>
+        {{ form_label(form.theme) }}
+        {{ form_widget(form.theme) }}
+        {{ form_errors(form.theme) }}
+    </div>
+
+    <button type="submit">Enregistrer</button>
+
+{{ form_end(form) }}
+
+{% endblock %}

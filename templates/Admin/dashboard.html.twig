@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <h1>Backoffice Knowledge Learning</h1>
+        <ul>
+            <li><a href="{{ path('admin_user_index') }}">Voir les utilisateurs</a></li>
+            <li><a href="{{ path('admin_theme_index') }}">Gérer les thèmes</a></li>
+            <li><a href="{{ path('admin_cursus_index') }}">Gérer les cursus</a></li>
+            <li><a href="{{ path('admin_lesson_index') }}">Gérer les leçons</a></li>
+            <li><a href="{{ path('admin_purchase_index') }}">Consulter la liste des achats</a></li>
+            <li><a href="{{ path('admin_certification_index') }}">Voir les certifications</a></li>
+        </ul>
+{% endblock %}

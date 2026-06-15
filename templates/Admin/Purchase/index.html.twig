@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des achats{% endblock %}
+
+{% block body %}
+
+<h1>Gestion des achats</h1>
+
+<a href="{{ path('admin_dashboard') }}">Retour au dashboard</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Type</th>
+            <th>Cursus ou leçon achetés</th>
+            <th>Prix</th>
+            <th>Date d'achat</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.user.name }}</td>
+
+                <td>{{ purchase.user.email }}</td>
+
+                <td>{{ purchase.type }}</td>
+
+                <td>
+                    {% if purchase.type == 'cursus' and purchase.cursus %}
+                        {{ purchase.cursus.title }}
+                    {% elseif purchase.type == 'lesson' and purchase.lesson %}
+                        {{ purchase.lesson.title }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>{{ purchase.price / 100 }} €</td>
+                <td>{{ purchase.createdAt|date('d/m/Y') }}</td>
+                <td>{{ purchase.status }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun achat trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

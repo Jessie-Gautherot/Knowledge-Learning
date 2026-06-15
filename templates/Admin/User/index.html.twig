@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block body %}
+
+<h1>Liste des utilisateurs</h1>
+
+<a href="{{ path('admin_dashboard') }}">Retour au dashboard</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Rôles</th>
+            <th>Date d'inscription</th>
+            <th>Compte activé</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles|join(', ') }}</td>
+                <td>{{ user.createdAt|date('d/m/Y') }}</td>
+                <td>
+                    {% if user.active %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun utilisateur trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

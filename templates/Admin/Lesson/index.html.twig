@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des leçons{% endblock %}
+
+{% block body %}
+
+<h1>Gestion des leçons</h1>
+
+<a href="{{ path('admin_dashboard') }}">Retour au dashboard</a>
+
+<p>
+    <a href="{{ path('admin_lesson_new') }}">Ajouter une leçon</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom de la leçon</th>
+            <th>Cursus de la leçon</th>
+            <th>Thème</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for lesson in lessons %}
+            <tr>
+                <td>{{ lesson.title }}</td>
+                <td>{{ lesson.cursus.title }}</td>
+                <td>{{ lesson.cursus.theme.name }}</td>
+                <td>{{ lesson.price / 100 }} €</td>
+                <td>
+                    <a href="{{ path('admin_lesson_edit', { id: lesson.id }) }}">Modifier</a>
+
+                    <form method="post" action="{{ path('admin_lesson_delete', { id: lesson.id }) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete_lesson_' ~ lesson.id) }}">
+                        <button class="button-delete" type="submit" onclick="return confirm('Supprimer cette leçon ?')">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucune leçon trouvée.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

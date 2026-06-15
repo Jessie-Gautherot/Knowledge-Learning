@@ -39,6 +39,16 @@
 
             {% endif %}
 
+            {% if is_granted('ROLE_ADMIN') %}
+
+            <li class="menu-item">
+                <a class="menu-btn" href="{{ path('admin_dashboard') }}">
+                    Administration
+                </a>
+            </li>
+
+            {% endif %}
+
             <li class="menu-item">
 
                 <button class="menu-btn">

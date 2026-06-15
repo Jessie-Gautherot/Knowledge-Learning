@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des cursus{% endblock %}
+
+{% block body %}
+
+<h1>Gestion des cursus</h1>
+
+<a href="{{ path('admin_dashboard') }}">Retour au dashboard</a>
+
+<p>
+    <a href="{{ path('admin_cursus_new') }}">Ajouter un cursus</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom du cursus</th>
+            <th>Prix</th>
+            <th>Thème du cursus</th>
+            <th>Nombre de leçons dans le cursus</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for cursus in cursusList %}
+            <tr>
+                <td>{{ cursus.title }}</td>
+                <td>{{ cursus.price / 100 }} €</td>
+                <td>{{ cursus.theme.name }}</td>
+                <td>{{ cursus.lessons|length }}</td>
+                <td>
+                    <a href="{{ path('admin_cursus_edit', { id: cursus.id }) }}">Modifier</a>
+
+                    <form method="post" action="{{ path('admin_cursus_delete', { id: cursus.id }) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete_cursus_' ~ cursus.id) }}">
+                        <button class="button-delete" type="submit" onclick="return confirm('Supprimer ce cursus ?')">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun cursus trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

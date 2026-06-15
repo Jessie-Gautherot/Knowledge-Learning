@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des thèmes{% endblock %}
+
+{% block body %}
+
+<h1>Gestion des thèmes</h1>
+
+<a href="{{ path('admin_dashboard') }}">Retour au dashboard</a>
+
+<p>
+    <a href="{{ path('admin_theme_new') }}">Ajouter un thème</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Thème</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for theme in themes %}
+            <tr>
+                <td>{{ theme.name }}</td>
+                <td>
+                    <a href="{{ path('admin_theme_edit', { id: theme.id }) }}">Modifier</a>
+
+                    <form method="post" action="{{ path('admin_theme_delete', { id: theme.id }) }}" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete_theme_' ~ theme.id) }}">
+                        <button class="button-delete" type="submit" onclick="return confirm('Supprimer ce thème ?')">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun thème trouvé.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des certifications{% endblock %}
+
+{% block body %}
+
+<h1>Liste des certifications attribuées</h1>
+
+<a href="{{ path('admin_dashboard') }}">Retour au dashboard</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Utilisateur</th>
+            <th>Email</th>
+            <th>Thème certifié</th>
+            <th>date d'obtention</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for certification in certifications %}
+            <tr>
+                <td>{{ certification.user.name }}</td>
+                <td>{{ certification.user.email}}</td>
+                <td>{{ certification.theme.name }}</td>
+                <td>{{ certification.createdAt|date('d/m/Y') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucune certification trouvée.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

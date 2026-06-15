@@ -118,8 +118,30 @@ button {
     cursor: pointer;
 }
 
+.button-delete{
+    background-color: #cd2c2e;
+    color: #f1f8fc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 button:hover {
     opacity: 0.9;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
 }
 
 /* FOOTER */
