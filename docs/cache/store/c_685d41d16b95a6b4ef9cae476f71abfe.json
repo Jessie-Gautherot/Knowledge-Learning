@@ -1,0 +1,161 @@
+{
+    "name": "App\\Service\\StripeService",
+    "line": 12,
+    "short_desc": "Class StripeService",
+    "long_desc": "Handles Stripe Checkout payments in sandbox.",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Service",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Service\\StripeService.php",
+    "relative_file": null,
+    "hash": "f551269f7b2882098ff40c27b2f4ad920b06be88",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "StripeClient": "Stripe\\StripeClient"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 17,
+            "short_desc": "Constructor",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "stripeClient": {
+                    "name": "stripeClient",
+                    "line": 18,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Stripe\\StripeClient",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 4,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "createCheckoutSession": {
+            "name": "createCheckoutSession",
+            "line": 31,
+            "short_desc": "Create a Stripe Checkout session.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "Stripe checkout URL",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "name": {
+                    "name": "name",
+                    "line": 32,
+                    "short_desc": "Product name",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "amount": {
+                    "name": "amount",
+                    "line": 33,
+                    "short_desc": "Price in cents",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "successUrl": {
+                    "name": "successUrl",
+                    "line": 34,
+                    "short_desc": "URL after successful payment",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "cancelUrl": {
+                    "name": "cancelUrl",
+                    "line": 35,
+                    "short_desc": "URL after canceled payment",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

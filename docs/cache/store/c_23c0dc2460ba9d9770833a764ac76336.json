@@ -1,0 +1,51 @@
+{
+    "name": "App\\Controller\\Admin\\DashboardController",
+    "line": 10,
+    "short_desc": null,
+    "long_desc": null,
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Controller\\Admin",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Controller\\Admin\\DashboardController.php",
+    "relative_file": null,
+    "hash": "3797f99e6e03a1e07065634f4391549bf99188b5",
+    "parent": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "AbstractController": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+        "Response": "Symfony\\Component\\HttpFoundation\\Response",
+        "Route": "Symfony\\Component\\Routing\\Attribute\\Route",
+        "IsGranted": "Symfony\\Component\\Security\\Http\\Attribute\\IsGranted"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 14,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

@@ -1,0 +1,387 @@
+{
+    "name": "App\\Service\\PurchaseService",
+    "line": 21,
+    "short_desc": "Class PurchaseService",
+    "long_desc": "Handles all purchase logic of the application.\n- Prevent duplicate purchases\n- Create a purchase for a cursus or a lesson\n- Check if a user has access to content\n- Handle purchase business rules",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Service",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Service\\PurchaseService.php",
+    "relative_file": null,
+    "hash": "15e17a2bc12a57d9c15ca424ae0d05eb7d6a079a",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "User": "App\\Entity\\User",
+        "Cursus": "App\\Entity\\Cursus",
+        "Lesson": "App\\Entity\\Lesson",
+        "Purchase": "App\\Entity\\Purchase",
+        "PurchaseRepository": "App\\Repository\\PurchaseRepository",
+        "EntityManagerInterface": "Doctrine\\ORM\\EntityManagerInterface"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 29,
+            "short_desc": "Constructor",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "em": {
+                    "name": "em",
+                    "line": 30,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\ORM\\EntityManagerInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "purchaseRepository": {
+                    "name": "purchaseRepository",
+                    "line": 31,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\PurchaseRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "buyCursus": {
+            "name": "buyCursus",
+            "line": 49,
+            "short_desc": "Buy a cursus",
+            "long_desc": "- Checks if the user already bought the cursus\n- Creates a new Purchase\n- Saves the purchase in database",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 49,
+                    "short_desc": "The user who buys the cursus",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "cursus": {
+                    "name": "cursus",
+                    "line": 49,
+                    "short_desc": "The cursus to buy",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Cursus",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "buyLesson": {
+            "name": "buyLesson",
+            "line": 78,
+            "short_desc": "Buy a lesson\n- Checks if the user already bought the lesson\n- Creates a new Purchase\n- Saves the purchase in database",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 78,
+                    "short_desc": "The user who buys the lesson",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lesson": {
+                    "name": "lesson",
+                    "line": 78,
+                    "short_desc": "The lesson to buy",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Lesson",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "hasBoughtCursus": {
+            "name": "hasBoughtCursus",
+            "line": 103,
+            "short_desc": "Check if a user bought a cursus.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 103,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "cursus": {
+                    "name": "cursus",
+                    "line": 103,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Cursus",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "hasBoughtLesson": {
+            "name": "hasBoughtLesson",
+            "line": 115,
+            "short_desc": "Check if a user bought a lesson.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 115,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lesson": {
+                    "name": "lesson",
+                    "line": 115,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Lesson",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "canAccessLesson": {
+            "name": "canAccessLesson",
+            "line": 132,
+            "short_desc": "Check if a user can access a lesson.",
+            "long_desc": "Access is allowed if:\n- The user bought the lesson\n- OR his parent cursus",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "True if access is allowed, false otherwise",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 132,
+                    "short_desc": "The user",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lesson": {
+                    "name": "lesson",
+                    "line": 132,
+                    "short_desc": "The lesson to check",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Lesson",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

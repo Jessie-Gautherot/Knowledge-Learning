@@ -1,0 +1,228 @@
+{
+    "name": "App\\Controller\\LessonController",
+    "line": 17,
+    "short_desc": "Class LessonController",
+    "long_desc": "Handles display and validate lesson.",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Controller",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Controller\\LessonController.php",
+    "relative_file": null,
+    "hash": "2d9b2a847c1253a9443968ccc065ca56498bbb58",
+    "parent": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "LessonRepository": "App\\Repository\\LessonRepository",
+        "PurchaseService": "App\\Service\\PurchaseService",
+        "LessonProgressService": "App\\Service\\LessonProgressService",
+        "AbstractController": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+        "Response": "Symfony\\Component\\HttpFoundation\\Response",
+        "Route": "Symfony\\Component\\Routing\\Annotation\\Route"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "show": {
+            "name": "show",
+            "line": 33,
+            "short_desc": "Display a lesson.",
+            "long_desc": "This method:\n- Get a lesson by ID\n- Checks if the lesson exists\n- check if the user is authenticated\n- Verifies if the user has access (purchase required)\n- Renders the lesson view",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "The HTTP response rendering the lesson page",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 35,
+                    "short_desc": "The ID of the lesson to display",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lessonRepository": {
+                    "name": "lessonRepository",
+                    "line": 36,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\LessonRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "purchaseService": {
+                    "name": "purchaseService",
+                    "line": 37,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\PurchaseService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lessonProgressService": {
+                    "name": "lessonProgressService",
+                    "line": 38,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\LessonProgressService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "validate": {
+            "name": "validate",
+            "line": 83,
+            "short_desc": "Validate a lesson.",
+            "long_desc": "This method:\n- Gets the lesson by ID\n- Checks if the lesson exists\n- Checks if the user is authenticated\n- Checks access rights (purchase required)\n- Delegates validation logic to the LessonProgressService\n- Redirects to the lesson page with a success message",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "The HTTP redirect response after validation",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 85,
+                    "short_desc": "The ID of the lesson to validate",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lessonRepository": {
+                    "name": "lessonRepository",
+                    "line": 86,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\LessonRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lessonProgressService": {
+                    "name": "lessonProgressService",
+                    "line": 87,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\LessonProgressService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "purchaseService": {
+                    "name": "purchaseService",
+                    "line": 88,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\PurchaseService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

@@ -1,0 +1,351 @@
+{
+    "name": "App\\Controller\\PurchaseController",
+    "line": 20,
+    "short_desc": "Class PurchaseController",
+    "long_desc": "Handles purchase actions (cursus \/ lesson).",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Controller",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Controller\\PurchaseController.php",
+    "relative_file": null,
+    "hash": "e7e03ddc75be77e4b3c720e760805a83be871ac0",
+    "parent": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "CursusRepository": "App\\Repository\\CursusRepository",
+        "LessonRepository": "App\\Repository\\LessonRepository",
+        "PurchaseService": "App\\Service\\PurchaseService",
+        "AbstractController": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+        "Response": "Symfony\\Component\\HttpFoundation\\Response",
+        "Route": "Symfony\\Component\\Routing\\Annotation\\Route",
+        "StripeService": "App\\Service\\StripeService",
+        "RedirectResponse": "Symfony\\Component\\HttpFoundation\\RedirectResponse",
+        "UrlGeneratorInterface": "Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "buyCursus": {
+            "name": "buyCursus",
+            "line": 37,
+            "short_desc": "Handles the purchase of a cursus.",
+            "long_desc": "- Check if the user is authenticated\n- Check if the user account is activated\n- Get the cursus\n- Create a Stripe checkout session\n- Redirect the user to Stripe payment page",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "redirect response to Stripe checkout",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 39,
+                    "short_desc": "The ID of the cursus to purchase",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "cursusRepository": {
+                    "name": "cursusRepository",
+                    "line": 40,
+                    "short_desc": "Repository used to get the cursus",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\CursusRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "stripeService": {
+                    "name": "stripeService",
+                    "line": 41,
+                    "short_desc": "Service handling Stripe payments",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\StripeService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "successCursus": {
+            "name": "successCursus",
+            "line": 88,
+            "short_desc": "Handles successful cursus payment.",
+            "long_desc": "- Check if the user is authenticated\n- Get the purchased cursus\n- Create the purchase in database\n- Redirect with a success message",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "Redirect response",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 90,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "cursusRepository": {
+                    "name": "cursusRepository",
+                    "line": 91,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\CursusRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "purchaseService": {
+                    "name": "purchaseService",
+                    "line": 92,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\PurchaseService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "buyLesson": {
+            "name": "buyLesson",
+            "line": 128,
+            "short_desc": "Handles the purchase of a lesson.",
+            "long_desc": "- Check if the user is authenticated\n- Check if the user account is activated\n- Get the lesson by its ID\n- Create a Stripe checkout session\n- Redirect the user to Stripe payment page",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "Redirect response to Stripe checkout",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 130,
+                    "short_desc": "The ID of the lesson to purchase",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lessonRepository": {
+                    "name": "lessonRepository",
+                    "line": 131,
+                    "short_desc": "Repository used to get the lesson",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\LessonRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "stripeService": {
+                    "name": "stripeService",
+                    "line": 132,
+                    "short_desc": "Service handling Stripe payments",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\StripeService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "successLesson": {
+            "name": "successLesson",
+            "line": 182,
+            "short_desc": "Handles successful lesson payment.",
+            "long_desc": "- Check if the user is authenticated\n- Get the lesson by its ID\n- Create the purchase in database\n- Redirect with a success message",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "Redirect response",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 184,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lessonRepository": {
+                    "name": "lessonRepository",
+                    "line": 185,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\LessonRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "purchaseService": {
+                    "name": "purchaseService",
+                    "line": 186,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\PurchaseService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

@@ -1,0 +1,36 @@
+Activation (App\Tests\RegisterLogin\Activation)
+ [x] User activation
+
+Lesson Progress Repository (App\Tests\Data\LessonProgressRepository)
+ [x] Is lesson validated
+ [x] Is lesson validated returns false
+ [x] Find one progress
+ [x] Find one progress returns null
+
+Login (App\Tests\RegisterLogin\Login)
+ [x] User can login
+
+Purchase Functional (App\Tests\Purchase\PurchaseFunctional)
+ [x] User can buy cursus
+
+Purchase Repository (App\Tests\Data\PurchaseRepository)
+ [x] Has bought cursus
+ [x] Failed cursus purchase returns false
+ [x] Has bought lesson
+ [x] Find by user
+
+Purchase Service Unit (App\Tests\Purchase\PurchaseServiceUnit)
+ [x] Buy cursus
+ [x] Buy lesson
+
+Registration (App\Tests\RegisterLogin\Registration)
+ [x] User registration
+
+User Repository (App\Tests\Data\UserRepository)
+ [x] Find one by email
+ [x] Find one by email returns null
+ [x] Load user by identifier
+ [x] Load user by identifier throws exception
+ [x] Find one by activation token
+ [x] Find one by activation token returns null
+

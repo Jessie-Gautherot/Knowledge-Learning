@@ -1,0 +1,172 @@
+{
+    "name": "App\\EventSubscriber\\BlameableSubscriber",
+    "line": 18,
+    "short_desc": "Automatically sets createdBy and updatedBy\nwhen an entity is created or updated.",
+    "long_desc": "Only entities implementing BlameableInterface\nare handled by this subscriber.",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\EventSubscriber",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\EventSubscriber\\BlameableSubscriber.php",
+    "relative_file": null,
+    "hash": "66646b59802498bcf00846e2fca08d5edb810013",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "BlameableInterface": "App\\Entity\\BlameableInterface",
+        "EventSubscriber": "Doctrine\\Common\\EventSubscriber",
+        "LifecycleEventArgs": "Doctrine\\ORM\\Event\\LifecycleEventArgs",
+        "Events": "Doctrine\\ORM\\Events",
+        "Security": "Symfony\\Bundle\\SecurityBundle\\Security"
+    },
+    "errors": [],
+    "interfaces": {
+        "Doctrine\\Common\\EventSubscriber": "Doctrine\\Common\\EventSubscriber"
+    },
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 22,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "security": {
+                    "name": "security",
+                    "line": 22,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Symfony\\Bundle\\SecurityBundle\\Security",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "getSubscribedEvents": {
+            "name": "getSubscribedEvents",
+            "line": 27,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "prePersist": {
+            "name": "prePersist",
+            "line": 43,
+            "short_desc": "Called when a new entity is created.",
+            "long_desc": "Sets createdBy and updatedBy\nwith the current user.",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "args": {
+                    "name": "args",
+                    "line": 43,
+                    "short_desc": "Doctrine event arguments",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\ORM\\Event\\LifecycleEventArgs",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "preUpdate": {
+            "name": "preUpdate",
+            "line": 67,
+            "short_desc": "Called when an entity is updated.",
+            "long_desc": "Updates the updatedBy field\nwith the current user.",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "args": {
+                    "name": "args",
+                    "line": 67,
+                    "short_desc": "Doctrine event arguments",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\ORM\\Event\\LifecycleEventArgs",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

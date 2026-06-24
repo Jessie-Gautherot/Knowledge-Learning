@@ -1,0 +1,191 @@
+{
+    "name": "App\\Repository\\LessonProgressRepository",
+    "line": 11,
+    "short_desc": null,
+    "long_desc": null,
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Repository",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Repository\\LessonProgressRepository.php",
+    "relative_file": null,
+    "hash": "c81e4fbfefcd5c7522a66b806f9fde664b55b464",
+    "parent": "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "LessonProgress": "App\\Entity\\LessonProgress",
+        "User": "App\\Entity\\User",
+        "Lesson": "App\\Entity\\Lesson",
+        "ServiceEntityRepository": "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+        "ManagerRegistry": "Doctrine\\Persistence\\ManagerRegistry"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 13,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "registry": {
+                    "name": "registry",
+                    "line": 13,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\Persistence\\ManagerRegistry",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "isLessonValidated": {
+            "name": "isLessonValidated",
+            "line": 29,
+            "short_desc": "Check if a lesson is validated by user",
+            "long_desc": "Return true if :\n- A lesson progress exist and the lesson is marked as validated",
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": "True if validated",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 29,
+                    "short_desc": "The user",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lesson": {
+                    "name": "lesson",
+                    "line": 29,
+                    "short_desc": "The lesson",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Lesson",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "findOneProgress": {
+            "name": "findOneProgress",
+            "line": 49,
+            "short_desc": "Find lesson progress for a given user and lesson",
+            "long_desc": "- Returns the LessonProgress if it exist\n- Returns null if no progress is found",
+            "hint": [
+                [
+                    "\\App\\Entity\\LessonProgress",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": "The progress entity or null",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 49,
+                    "short_desc": "The user",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "lesson": {
+                    "name": "lesson",
+                    "line": 49,
+                    "short_desc": "The lesson",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Lesson",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

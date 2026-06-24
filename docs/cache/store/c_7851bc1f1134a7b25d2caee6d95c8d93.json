@@ -1,0 +1,119 @@
+{
+    "name": "App\\Entity\\Traits\\TimestampableTrait",
+    "line": 13,
+    "short_desc": "Trait TimestampableTrait",
+    "long_desc": "Automatically adds createdAt and updatedAt fields\nto avoid repeating timestamp logic in entities.",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Entity\\Traits",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Entity\\Traits\\TimestampableTrait.php",
+    "relative_file": null,
+    "hash": "89cf8a44d3798d85684d421a9abb6958499bd50e",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": true,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "ORM": "Doctrine\\ORM\\Mapping"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "initTimestamps": {
+            "name": "initTimestamps",
+            "line": 21,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "updateTimestamp": {
+            "name": "updateTimestamp",
+            "line": 30,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getCreatedAt": {
+            "name": "getCreatedAt",
+            "line": 36,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\DateTimeImmutable",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getUpdatedAt": {
+            "name": "getUpdatedAt",
+            "line": 41,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\DateTimeImmutable",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

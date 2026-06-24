@@ -1,0 +1,202 @@
+{
+    "name": "App\\Repository\\UserRepository",
+    "line": 20,
+    "short_desc": "Class UserRepository",
+    "long_desc": "Handles all database operations related to User entity.\n\nResponsibilities:\n- Get users from the database\n- Load a user for authentication\n- Find users by email address or activation token",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Repository",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Repository\\UserRepository.php",
+    "relative_file": null,
+    "hash": "3166b22ac7118eb71cd6a77d9862e097e41ff676",
+    "parent": "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "User": "App\\Entity\\User",
+        "ServiceEntityRepository": "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+        "ManagerRegistry": "Doctrine\\Persistence\\ManagerRegistry",
+        "UserNotFoundException": "Symfony\\Component\\Security\\Core\\Exception\\UserNotFoundException"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 27,
+            "short_desc": "Constructor",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "registry": {
+                    "name": "registry",
+                    "line": 27,
+                    "short_desc": "Doctrine registry",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\Persistence\\ManagerRegistry",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "findOneByEmail": {
+            "name": "findOneByEmail",
+            "line": 39,
+            "short_desc": "Find a user by email address",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\App\\Entity\\User",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "email": {
+                    "name": "email",
+                    "line": 39,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "loadUserByIdentifier": {
+            "name": "loadUserByIdentifier",
+            "line": 55,
+            "short_desc": "Load user for authentication (Symfony Security)",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\App\\Entity\\User",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [
+                [
+                    "\\Symfony\\Component\\Security\\Core\\Exception\\UserNotFoundException",
+                    ""
+                ]
+            ],
+            "errors": [],
+            "parameters": {
+                "identifier": {
+                    "name": "identifier",
+                    "line": 55,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "findOneByActivationToken": {
+            "name": "findOneByActivationToken",
+            "line": 72,
+            "short_desc": "Find a user by activation token",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\App\\Entity\\User",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "token": {
+                    "name": "token",
+                    "line": 72,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

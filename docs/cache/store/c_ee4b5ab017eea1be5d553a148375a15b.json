@@ -1,0 +1,65 @@
+{
+    "name": "App\\Repository\\LessonRepository",
+    "line": 14,
+    "short_desc": "Class LessonRepository",
+    "long_desc": "Handles database operations for Lesson entity.",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Repository",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Repository\\LessonRepository.php",
+    "relative_file": null,
+    "hash": "4d5b59fa3978695ea76c5e88f68cf2b7d9f94a83",
+    "parent": "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "Lesson": "App\\Entity\\Lesson",
+        "ServiceEntityRepository": "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+        "ManagerRegistry": "Doctrine\\Persistence\\ManagerRegistry"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "__construct": {
+            "name": "__construct",
+            "line": 21,
+            "short_desc": "Constructor",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "registry": {
+                    "name": "registry",
+                    "line": 21,
+                    "short_desc": "Doctrine registry",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\Persistence\\ManagerRegistry",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

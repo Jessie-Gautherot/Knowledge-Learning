@@ -1,0 +1,245 @@
+{
+    "name": "App\\Entity\\LessonProgress",
+    "line": 14,
+    "short_desc": "Class LessonProgress",
+    "long_desc": "Saves if a user has validated a lesson.",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Entity",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Entity\\LessonProgress.php",
+    "relative_file": null,
+    "hash": "c1a522049d72f0009129fe0de85eff70c8ff44a2",
+    "parent": null,
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "ORM": "Doctrine\\ORM\\Mapping",
+        "TimestampableTrait": "App\\Entity\\Traits\\TimestampableTrait",
+        "BlameableTrait": "App\\Entity\\Traits\\BlameableTrait"
+    },
+    "errors": [],
+    "interfaces": {
+        "App\\Entity\\BlameableInterface": "App\\Entity\\BlameableInterface"
+    },
+    "traits": {
+        "App\\Entity\\Traits\\TimestampableTrait": "App\\Entity\\Traits\\TimestampableTrait",
+        "App\\Entity\\Traits\\BlameableTrait": "App\\Entity\\Traits\\BlameableTrait"
+    },
+    "properties": [],
+    "methods": {
+        "getId": {
+            "name": "getId",
+            "line": 46,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "int",
+                    false
+                ],
+                [
+                    "null",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "getUser": {
+            "name": "getUser",
+            "line": 51,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\App\\Entity\\User",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setUser": {
+            "name": "setUser",
+            "line": 56,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "App\\Entity\\LessonProgress",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "user": {
+                    "name": "user",
+                    "line": 56,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\User",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "getLesson": {
+            "name": "getLesson",
+            "line": 62,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "\\App\\Entity\\Lesson",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setLesson": {
+            "name": "setLesson",
+            "line": 67,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "App\\Entity\\LessonProgress",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "lesson": {
+                    "name": "lesson",
+                    "line": 67,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Entity\\Lesson",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "isValidated": {
+            "name": "isValidated",
+            "line": 73,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "bool",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "setIsValidated": {
+            "name": "setIsValidated",
+            "line": 78,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "App\\Entity\\LessonProgress",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "isValidated": {
+                    "name": "isValidated",
+                    "line": 78,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "bool",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

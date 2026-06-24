@@ -1,0 +1,136 @@
+{
+    "name": "App\\Form\\LessonType",
+    "line": 18,
+    "short_desc": "Form used to create and edit a Lesson.",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Form",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Form\\LessonType.php",
+    "relative_file": null,
+    "hash": "5e2ff79888b7dba17fffaf747e48f9429b46e159",
+    "parent": "Symfony\\Component\\Form\\AbstractType",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "Cursus": "App\\Entity\\Cursus",
+        "Lesson": "App\\Entity\\Lesson",
+        "EntityType": "Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType",
+        "AbstractType": "Symfony\\Component\\Form\\AbstractType",
+        "IntegerType": "Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType",
+        "TextareaType": "Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType",
+        "TextType": "Symfony\\Component\\Form\\Extension\\Core\\Type\\TextType",
+        "FormBuilderInterface": "Symfony\\Component\\Form\\FormBuilderInterface",
+        "OptionsResolver": "Symfony\\Component\\OptionsResolver\\OptionsResolver"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "buildForm": {
+            "name": "buildForm",
+            "line": 23,
+            "short_desc": "Build the lesson form fields.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "builder": {
+                    "name": "builder",
+                    "line": 23,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Symfony\\Component\\Form\\FormBuilderInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "options": {
+                    "name": "options",
+                    "line": 23,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "array",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "configureOptions": {
+            "name": "configureOptions",
+            "line": 50,
+            "short_desc": null,
+            "long_desc": null,
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "resolver": {
+                    "name": "resolver",
+                    "line": 50,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Symfony\\Component\\OptionsResolver\\OptionsResolver",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

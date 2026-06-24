@@ -1,0 +1,213 @@
+{
+    "name": "App\\Controller\\RegistrationController",
+    "line": 29,
+    "short_desc": "Class RegistrationController",
+    "long_desc": "Handles user registration and account activation.\n\nResponsibilities:\n- Display registration form\n- Validate and handle user input\n- Hash password securely\n- Generate activation token\n- Persist user into database\n- Activate account via token",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Controller",
+    "file": "C:\\Users\\User\\Desktop\\Knowledge Learning\\knowledge-learning\/src\\Controller\\RegistrationController.php",
+    "relative_file": null,
+    "hash": "b091e1c56b91a2dab28140fdd2bd594cd4911db5",
+    "parent": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "is_read_only": false,
+    "aliases": {
+        "User": "App\\Entity\\User",
+        "RegistrationFormType": "App\\Form\\RegistrationFormType",
+        "EntityManagerInterface": "Doctrine\\ORM\\EntityManagerInterface",
+        "Request": "Symfony\\Component\\HttpFoundation\\Request",
+        "Response": "Symfony\\Component\\HttpFoundation\\Response",
+        "AbstractController": "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+        "UserPasswordHasherInterface": "Symfony\\Component\\PasswordHasher\\Hasher\\UserPasswordHasherInterface",
+        "Route": "Symfony\\Component\\Routing\\Annotation\\Route",
+        "UserRepository": "App\\Repository\\UserRepository",
+        "EmailService": "App\\Service\\EmailService"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "register": {
+            "name": "register",
+            "line": 41,
+            "short_desc": "Display and handle the registration form",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 43,
+                    "short_desc": "HTTP request",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Symfony\\Component\\HttpFoundation\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "entityManager": {
+                    "name": "entityManager",
+                    "line": 44,
+                    "short_desc": "Doctrine entity manager",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\ORM\\EntityManagerInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "passwordHasher": {
+                    "name": "passwordHasher",
+                    "line": 45,
+                    "short_desc": "Password hasher service",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Symfony\\Component\\PasswordHasher\\Hasher\\UserPasswordHasherInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "emailService": {
+                    "name": "emailService",
+                    "line": 46,
+                    "short_desc": "Service used to send activation emails",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Service\\EmailService",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        },
+        "activate": {
+            "name": "activate",
+            "line": 105,
+            "short_desc": "Activate user account using token",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Symfony\\Component\\HttpFoundation\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "see": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "is_intersection_type": false,
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "token": {
+                    "name": "token",
+                    "line": 107,
+                    "short_desc": "Activation token sent by email",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "string",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "entityManager": {
+                    "name": "entityManager",
+                    "line": 108,
+                    "short_desc": "Doctrine entity manager",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Doctrine\\ORM\\EntityManagerInterface",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                },
+                "userRepository": {
+                    "name": "userRepository",
+                    "line": 109,
+                    "short_desc": "Repository used to find the user",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Repository\\UserRepository",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": 0,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false,
+                    "is_read_only": false,
+                    "is_intersection_type": false
+                }
+            }
+        }
+    },
+    "constants": []
+}
