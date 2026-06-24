@@ -13,21 +13,22 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 /**
- * Class RegistrationFormType
+ * Registration form used to create a new user account.
  *
- * Defines the user registration form structure and validation rules.
+ * This form:
+ * - Get the user name
+ * - Get the user email
+ * - Get the user password
+ * - Check password confirmation
+ * - Check form validation rules
  *
- * Responsibilities:
- * - Build the registration form fields (name, email, password)
- * - Apply validation constraints to ensure data integrity
- * - Handle password confirmation using RepeatedType
- * - Enforce password strength (minimum length, uppercase, number)
- * The plainPassword field is used only for form input and is not mapped to the User entity.
- * It is processed in the controller, where it is securely hashed before being persisted in the database.
+ * The plainPassword is hashed before saving
  */
- 
 class RegistrationFormType extends AbstractType
 {
+    /**
+    * Build the registration form fields.
+    */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -72,6 +73,9 @@ class RegistrationFormType extends AbstractType
             ]);
     }
 
+    /**
+    * Link the form to the User entity.
+    */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

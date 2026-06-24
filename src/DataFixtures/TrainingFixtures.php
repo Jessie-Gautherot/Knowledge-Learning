@@ -130,19 +130,17 @@ class TrainingFixtures extends Fixture
             ]
         ];
 
-        /**
-         * Loop through all themes
-         */
+        // Loop through all themes 
         foreach ($themes as $themeName => $cursusList) {
 
+            // create theme
             $theme = new Theme();
             $theme->setName($themeName);
 
-            /**
-             * Loop through cursus of current theme
-             */
+            // Loop through cursus of current theme
             foreach ($cursusList as $cursusData) {
 
+                // Create cursus
                 $cursus = new Cursus();
 
                 $cursus->setTitle($cursusData['title']);
@@ -151,11 +149,10 @@ class TrainingFixtures extends Fixture
                 // Attach cursus to theme
                 $theme->addCursus($cursus);
 
-                /**
-                 * Loop through lessons of current cursus
-                 */
+                // Loop through lessons of current cursus
                 foreach ($cursusData['lessons'] as $lessonData) {
 
+                    // Create lesson
                     $lesson = new Lesson();
 
                     $lesson->setTitle($lessonData['title']);
@@ -175,11 +172,9 @@ class TrainingFixtures extends Fixture
                 }
             }
 
-            // Persist theme with related cursus and lessons
             $manager->persist($theme);
         }
 
-        // Save all data
         $manager->flush();
     }
 }

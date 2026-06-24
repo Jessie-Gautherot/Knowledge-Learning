@@ -16,26 +16,24 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
  * Responsibilities:
  * - Display login form
  * - Show authentication errors
- * - Handle logout 
+ * - Handle user logout 
  */
 class SecurityController extends AbstractController
 {
     /**
      * Display login page and handle authentication errors
      *
-     * @param AuthenticationUtils $authenticationUtils
-     * @return Response
+     * @param AuthenticationUtils $authenticationUtils Helper used to retrieve login errors and last username
+     * 
+     * @return Response Login page response
      */
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // Get last authentication error (if any)
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        // Get last entered username (email)
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        // Render login page
         return $this->render('Security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
@@ -46,13 +44,13 @@ class SecurityController extends AbstractController
     * Handles user logout.
     *
     * Remove the authenticated user token
-    * destroy the current session 
-    * redirect user to the home page.
+    * Invalidate the current session 
+    * Redirect the user to the home page.
     *
-    * @param Request $request
-    * @param TokenStorageInterface $tokenStorage
+    * @param Request $request Current HTTP request
+    * @param TokenStorageInterface $tokenStorage Authentication token storage
     *
-    * @return RedirectResponse
+    * @return RedirectResponse Redirect response to home page
     */
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(
@@ -60,9 +58,8 @@ class SecurityController extends AbstractController
         TokenStorageInterface $tokenStorage
     ): RedirectResponse {
         $tokenStorage->setToken(null);
-
         $request->getSession()->invalidate();
 
         return $this->redirectToRoute('app_home');
-    }
+        }
     }

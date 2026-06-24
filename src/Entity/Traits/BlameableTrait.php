@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Trait BlameableTrait
  *
- * Adds automatic tracking of the user who created and updated an entity.
+ * Automatically adds createdBy and updatedBy fields
+ * to track which user created or updated an entity.
  */
 trait BlameableTrait
 {

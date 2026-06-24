@@ -9,12 +9,11 @@ use Doctrine\ORM\Events;
 use Symfony\Bundle\SecurityBundle\Security;
 
 /**
- * Automatically sets createdBy and updatedBy fields
- * on entities implementing BlameableInterface.
- *
- * This subscriber listens to Doctrine lifecycle events
- * in order to track the user responsible for creating
- * or updating an entity.
+ * Automatically sets createdBy and updatedBy
+ * when an entity is created or updated.
+ * 
+ * Only entities implementing BlameableInterface
+ * are handled by this subscriber.
  */
 class BlameableSubscriber implements EventSubscriber
 {
@@ -34,10 +33,10 @@ class BlameableSubscriber implements EventSubscriber
     }
 
     /**
-     * Handles entity creation.
+     * Called when a new entity is created.
      *
-     * Sets createdBy and updatedBy fields
-     * when a new entity is persisted.
+     * Sets createdBy and updatedBy
+     * with the current user.
      *
      * @param LifecycleEventArgs $args Doctrine event arguments
      */
@@ -58,9 +57,10 @@ class BlameableSubscriber implements EventSubscriber
     }
 
     /**
-     * Handles entity update.
+     * Called when an entity is updated.
      *
-     * Updates the updatedBy field when an entity is modified.
+     * Updates the updatedBy field
+     * with the current user.
      *
      * @param LifecycleEventArgs $args Doctrine event arguments
      */

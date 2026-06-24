@@ -23,11 +23,12 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  * Handles user authentication.
  *
  * Responsibilities:
- * - Get login data
+ * - Get login form data
  * - Find user by email
  * - Check password
- * - Handle login success and failure
- * - Protect the form with CSRF
+ * - Redirect the user after login
+ * - Handle authentication errors
+ * - Protect the login form with a CSRF token
  */
 class UserAuthenticator extends AbstractLoginFormAuthenticator
 {

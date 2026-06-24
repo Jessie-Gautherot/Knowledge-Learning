@@ -12,10 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+/**
+ * Admin controller used to manage lessons.
+ */
 #[Route('/admin/lessons', name: 'admin_lesson_')]
 #[IsGranted('ROLE_ADMIN')]
 class LessonAdminController extends AbstractController
 {
+    /**
+     * Display the list of lessons.
+     */
     #[Route('', name: 'index')]
     public function index(LessonRepository $lessonRepository): Response
     {
@@ -24,6 +30,9 @@ class LessonAdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Create a new lesson.
+     */
     #[Route('/new', name: 'new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -45,6 +54,9 @@ class LessonAdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Updates an existing lesson.
+     */
     #[Route('/{id}/edit', name: 'edit')]
     public function edit(
         Lesson $lesson,
@@ -66,6 +78,9 @@ class LessonAdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Deletes a lesson after CSRF validation.
+     */
     #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(
         Lesson $lesson,

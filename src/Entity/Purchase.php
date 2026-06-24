@@ -6,6 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\TimestampableTrait;
 use App\Entity\Traits\BlameableTrait;
 
+/**
+ * Class Purchase
+ *
+ * Represents a purchase made by a user.
+ *
+ * A purchase can be associated with a cursus
+ * or with a lesson 
+ */
 #[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
 class Purchase implements BlameableInterface
@@ -49,7 +57,7 @@ class Purchase implements BlameableInterface
     private ?Lesson $lesson = null;
 
     /**
-     * Price (in cents)
+     * Price in cents
      */
     #[ORM\Column(type: 'integer')]
     private int $price;
@@ -61,13 +69,11 @@ class Purchase implements BlameableInterface
     private string $status;
 
     /**
-     * Payment provider ID (Stripe session for example)
+     * Payment provider ID 
      */
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $paymentId = null;
 
-  
-    // GETTERS / SETTERS
 
     public function getId(): ?int
     {
@@ -90,6 +96,13 @@ class Purchase implements BlameableInterface
         return $this->type;
     }
 
+    /**
+    * Set purchase type.
+    *
+    * Only cursus and lesson types are allowed.
+    *
+    * @throws \InvalidArgumentException If the type is invalid
+    */
     public function setType(string $type): self
     {
         if (!in_array($type, [self::TYPE_CURSUS, self::TYPE_LESSON])) {

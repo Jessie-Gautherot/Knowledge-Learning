@@ -12,10 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+/**
+ * Admin controller used to manage cursus.
+ */
 #[Route('/admin/cursus', name: 'admin_cursus_')]
 #[IsGranted('ROLE_ADMIN')]
 class CursusAdminController extends AbstractController
 {
+    /**
+     * Displays the list of all cursus.
+     */
     #[Route('', name: 'index')]
     public function index(CursusRepository $cursusRepository): Response
     {
@@ -24,6 +30,9 @@ class CursusAdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Create a new cursus.
+     */
     #[Route('/new', name: 'new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -45,6 +54,9 @@ class CursusAdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Update an existing cursus.
+     */
     #[Route('/{id}/edit', name: 'edit')]
     public function edit(
         Cursus $cursus,
@@ -66,6 +78,9 @@ class CursusAdminController extends AbstractController
         ]);
     }
 
+    /**
+     * Delete a cursus after CSRF validation.
+     */
     #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(
         Cursus $cursus,

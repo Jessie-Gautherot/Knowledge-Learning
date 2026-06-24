@@ -25,9 +25,6 @@ class Theme implements BlameableInterface
     #[ORM\Id, ORM\GeneratedValue, ORM\Column]
     private ?int $id = null;
 
-    /**
-     * Theme name
-     */
     #[ORM\Column(length: 255)]
     private string $name;
 
@@ -42,25 +39,16 @@ class Theme implements BlameableInterface
         $this->cursus = new ArrayCollection();
     }
 
-    /**
-     * Get theme ID
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Get theme name
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Set theme name
-     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -68,7 +56,7 @@ class Theme implements BlameableInterface
     }
 
     /**
-     * Get all cursus
+     * Return all cursus of this theme
      *
      * @return Collection<int, Cursus>
      */

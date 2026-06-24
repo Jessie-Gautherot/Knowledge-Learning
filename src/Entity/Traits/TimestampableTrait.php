@@ -7,10 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Trait TimestampableTrait
  *
- * Automatically handles creation and update timestamps
- * for entities using this trait.
- *
- * This avoids repeating timestamp logic in every entity.
+ * Automatically adds createdAt and updatedAt fields
+ * to avoid repeating timestamp logic in entities.
  */
 trait TimestampableTrait
 {

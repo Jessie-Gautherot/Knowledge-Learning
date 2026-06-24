@@ -13,8 +13,9 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
  * Handles all database operations related to User entity.
  *
  * Responsibilities:
- * - CRUD operations
- * - Custom queries (email, token, etc.)
+ * - Get users from the database
+ * - Load a user for authentication
+ * - Find users by email address or activation token
  */
 class UserRepository extends ServiceEntityRepository
 {
@@ -30,7 +31,7 @@ class UserRepository extends ServiceEntityRepository
 
 
     /**
-     * Find a user by email 
+     * Find a user by email address
      *
      * @param string $email
      * @return User|null

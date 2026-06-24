@@ -8,8 +8,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Form used to create and edit a theme.
+ */
 class ThemeType extends AbstractType
 {
+    /**
+     * Build the theme form field.
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -19,6 +25,9 @@ class ThemeType extends AbstractType
         ;
     }
 
+    /**
+     * Link the form to the Theme entity.
+     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

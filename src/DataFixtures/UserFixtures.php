@@ -13,8 +13,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  * Loads users into database.
  *
  * This fixture creates:
- * - One validated client user
- * - One validated administrator user
+ * - One active client user
+ * - One active administrator user
  */
 class UserFixtures extends Fixture
 {
@@ -37,9 +37,7 @@ class UserFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        // =========================
-        // Validated client user
-        // =========================
+        // Create active client user
         $user = new User();
 
         $user->setName('Client User');
@@ -52,19 +50,12 @@ class UserFixtures extends Fixture
         );
 
         $user->setPassword($hashedPassword);
-
-        // Account already activated
         $user->setIsActive(true);
-
-        // No activation token needed
         $user->setActivationToken(null);
 
         $manager->persist($user);
 
-
-        // =========================
-        // Administrator user
-        // =========================
+        // Create administrator user
         $admin = new User();
 
         $admin->setName('Admin User');
@@ -77,17 +68,13 @@ class UserFixtures extends Fixture
 
         $admin->setPassword($hashedPassword);
 
-        // Administrator role
+        // Assign administrator role
         $admin->setRoles(['ROLE_ADMIN']);
 
-        // Account already activated
         $admin->setIsActive(true);
-
-        // No activation token needed
         $admin->setActivationToken(null);
 
         $manager->persist($admin);
-
 
         // Save all users
         $manager->flush();

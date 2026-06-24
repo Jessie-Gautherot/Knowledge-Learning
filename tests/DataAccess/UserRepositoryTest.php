@@ -8,6 +8,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 
+/**
+ * Tests for UserRepository.
+ *
+ * Check user search methods used for:
+ * - authentication by email
+ * - account activation by token
+ * - unknown user handling
+ */
 class UserRepositoryTest extends KernelTestCase
 {
     private EntityManagerInterface $entityManager;

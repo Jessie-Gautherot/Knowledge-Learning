@@ -7,8 +7,8 @@ use App\Entity\User;
 /**
  * Interface BlameableInterface
  *
- * Defines a contract for entities that must track
- * the user responsible for creation and update actions.
+ * Defines methods required for
+ * createdBy and updatedBy fields.
  */
 interface BlameableInterface
 {

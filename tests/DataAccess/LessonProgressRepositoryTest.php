@@ -10,6 +10,12 @@ use App\Repository\LessonRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * Tests LessonProgressRepository custom methods.
+ *
+ * Checks lesson validation
+ * and finding lesson progress.
+ */
 class LessonProgressRepositoryTest extends KernelTestCase
 {
     private EntityManagerInterface $entityManager;

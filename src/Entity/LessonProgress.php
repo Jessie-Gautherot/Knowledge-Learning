@@ -23,14 +23,23 @@ class LessonProgress implements BlameableInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    /**
+     * User associated with this progress.
+     */
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
+    /**
+     * Lesson associated with this progress.
+     */
     #[ORM\ManyToOne(targetEntity: Lesson::class)]
     #[ORM\JoinColumn(nullable: false)]
     private Lesson $lesson;
 
+    /**
+     * Validation status of the lesson.
+     */
     #[ORM\Column(type: 'boolean')]
     private bool $isValidated = false;
 

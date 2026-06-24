@@ -21,16 +21,12 @@ class Certification implements BlameableInterface
     #[ORM\Id, ORM\GeneratedValue, ORM\Column]
     private ?int $id = null;
 
-    /**
-     * User who owns the certification
-     */
+    // User who owns the certification
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
     private User $user;
 
-    /**
-     * Theme associated to the certification
-     */
+    // Theme associated to the certification
     #[ORM\ManyToOne(targetEntity: Theme::class)]
     #[ORM\JoinColumn(nullable: false)]
     private Theme $theme;

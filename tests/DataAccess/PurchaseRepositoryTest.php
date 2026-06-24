@@ -11,6 +11,14 @@ use App\Repository\PurchaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * Tests for PurchaseRepository.
+ *
+ * - find purchases by user
+ * - check cursus purchases
+ * - check lesson purchases
+ * - handle purchase status correctly
+ */
 class PurchaseRepositoryTest extends KernelTestCase
 {
     private EntityManagerInterface $entityManager;

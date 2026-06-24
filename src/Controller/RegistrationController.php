@@ -20,7 +20,7 @@ use App\Service\EmailService;
  *
  * Responsibilities:
  * - Display registration form
- * - Validate and process user input
+ * - Validate and handle user input
  * - Hash password securely
  * - Generate activation token
  * - Persist user into database
@@ -29,11 +29,12 @@ use App\Service\EmailService;
 class RegistrationController extends AbstractController
 {
     /**
-     * Display and process the registration form
+     * Display and handle the registration form
      *
      * @param Request $request HTTP request
      * @param EntityManagerInterface $entityManager Doctrine entity manager
      * @param UserPasswordHasherInterface $passwordHasher Password hasher service
+     * @param EmailService $emailService Service used to send activation emails
      *
      * @return Response
      */
@@ -52,15 +53,10 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /**
-             * Retrieve plain password from the form
-             * This field is not mapped to the entity
-             */
+            // Get user password from form
             $plainPassword = $form->get('plainPassword')->getData();
 
-            /**
-             * Hash the password before saving it
-             */
+            // Hash the password before saving it
             $hashedPassword = $passwordHasher->hashPassword(
                 $user,
                 $plainPassword
@@ -68,49 +64,30 @@ class RegistrationController extends AbstractController
 
             $user->setPassword($hashedPassword);
 
-            /**
-             * Generate activation token for email verification
-             */
+            // Generate activation token for email verification
             $token = bin2hex(random_bytes(32));
             $user->setActivationToken($token);
 
-            /**
-             * Set user as not verified
-             * Account must be activated via email
-             */
+            // Set user as not activated. Account must be activated via email
             $user->setIsActive(false);
 
-            /**
-             * Persist user in database
-             */
             $entityManager->persist($user);
             $entityManager->flush();
 
-            /**
-            * Send account activation email to the newly registered user.
-            */
+            // Send account activation email 
             $emailService->sendActivationEmail(
-            $user->getEmail(),
-            $user->getActivationToken()
+                $user->getEmail(),
+                $user->getActivationToken()
             );
 
-            /**
-             * Flash message for user feedback
-             */
             $this->addFlash(
                 'success',
-                'Votre compte utilisateur a bien été créé, veuillez consulter vos emails pour l\'activer..'
+                'Votre compte utilisateur a bien été créé, veuillez consulter vos emails pour l\'activer.'
             );
 
-            /**
-             * Redirect to login page
-             */
             return $this->redirectToRoute('app_login');
         }
 
-        /**
-         * Render registration page with form
-         */
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
@@ -121,6 +98,7 @@ class RegistrationController extends AbstractController
      *
      * @param string $token Activation token sent by email
      * @param EntityManagerInterface $entityManager Doctrine entity manager
+     * @param UserRepository $userRepository Repository used to find the user
      *
      * @return Response
      */
@@ -131,34 +109,24 @@ class RegistrationController extends AbstractController
         UserRepository $userRepository
     ): Response {
 
-        /**
-         * Find user by activation token
-         */
+        // Find user by activation token
         $user = $userRepository->findOneByActivationToken($token);
 
         if (!$user) {
             throw $this->createNotFoundException('token invalide.');
         }
 
-        /**
-         * Activate account and remove token
-         */
+        // Activate account and remove token
         $user->setIsActive(true);
         $user->setActivationToken(null);
 
         $entityManager->flush();
 
-        /**
-         * Flash confirmation message
-         */
         $this->addFlash(
             'success',
             'Votre compte est activé, vous pouvez vous connecter.'
         );
 
-        /**
-         * Redirect to login page
-         */
         return $this->redirectToRoute('app_login');
     }
 }

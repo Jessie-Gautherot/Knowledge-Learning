@@ -12,8 +12,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Form used to create and edit a Lesson.
+ */
 class LessonType extends AbstractType
 {
+    /**
+     * Build the lesson form fields.
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
