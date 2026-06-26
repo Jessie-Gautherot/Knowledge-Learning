@@ -171,8 +171,8 @@ php bin/console doctrine:fixtures:load --env=test
 
 Répondre `yes` si Symfony demande une confirmation.
 
-### 7.4 Exécuter tous les tests PHPUnit
+### 7.4 Exécuter tous les tests PHPUnit autodocumentés
 
 ```bash
-php bin/phpunit
+php bin/phpunit --testdox
 ```
